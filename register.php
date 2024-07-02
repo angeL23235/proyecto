@@ -69,7 +69,7 @@
 
                     <div class="form-group">
                         <label for="num">Numero de documento</label>
-                        <input type="number" name="doc" class="form-control" id="num" aria-describedby="emailHelp" placeholder="Numero de Documento">
+                        <input type="text" name="doc" class="form-control" id="num" aria-describedby="emailHelp" placeholder="Numero de Documento">
                     </div>
 
                     <div class="form-group">

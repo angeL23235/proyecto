@@ -91,7 +91,7 @@ if (isset($_POST['btn_ing'])) {
                         <form action="index.php" method="post">
                             <div class="form-group">
                                 <label for="documento">Número de documento</label>
-                                <input type="number" name="doc" class="form-control" id="documento" aria-describedby="emailHelp" placeholder="Número de documento">
+                                <input type="text" name="doc" class="form-control" id="documento" aria-describedby="emailHelp" placeholder="Número de documento">
                             </div>
                             <div class="form-group">
                                 <label for="clave">Contraseña</label>

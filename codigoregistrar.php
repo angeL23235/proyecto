@@ -1,6 +1,7 @@
 <?php
+// inclusion base de datos
 include "conexion.php";
-
+// Verificacion de datos al presionar el boton
 if (isset($_POST["btn_registrar"])) {
     $tipodoc = $_POST['cmbident'];
     $numdoc = $_POST['doc'];
@@ -14,7 +15,8 @@ if (isset($_POST["btn_registrar"])) {
     // Procesamiento de la imagen de perfil
     $foto = $_FILES['foto'];
     $directorio_destino = "imagen-user/";
-    $nombre_archivo = $foto['name'];
+    $extension = pathinfo($foto['name'], PATHINFO_EXTENSION);
+    $nombre_archivo = $numdoc . "." . $extension;
     $ubicacion_temporal = $foto['tmp_name'];
     $ruta_destino = $directorio_destino . $nombre_archivo;
 
@@ -22,7 +24,6 @@ if (isset($_POST["btn_registrar"])) {
     if ($es_imagen !== false){
         if (move_uploaded_file($ubicacion_temporal, $ruta_destino)) {
             $encrip = md5($pass);
-
             $registrar = mysqli_query($con, "INSERT INTO `usuario` 
                 (`tipo_documento`, `numero_documento`, `nombres`, `apellidos`, `email`, `id_rol`, `clave`, `foto_perfil`) 
                 VALUES 
