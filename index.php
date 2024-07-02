@@ -43,7 +43,7 @@ if (isset($_POST['btn_ing'])) {
     <title>Login</title>
 </head>
 <body>
-       <!-- Custom CSS -->
+       <!-- CSS -->
        <style>
         body {
             font-family: 'Bebas Neue', sans-serif;
@@ -53,15 +53,20 @@ if (isset($_POST['btn_ing'])) {
 
         .encabezado h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem; /* Ajusta el tamaño según sea necesario */
-            font-weight: 400; /* Puedes ajustar el peso de la fuente si es necesario */
-            color: white; /* Color del texto en el encabezado */
+            font-size: 2.5rem; 
+            font-weight: 400;
+            color: white; 
         }
 
         .myform h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem; /* Ajusta el tamaño según sea necesario */
-            font-weight: 400; /* Puedes ajustar el peso de la fuente si es necesario */
+            font-size: 2rem; 
+            font-weight: 400; 
+        }
+        .foto_traslapp{
+            background-color:aliceblue;
+            border-color:aliceblue;
+            border-style:inset;
         }
     </style>
 <section class="container encabezado text-center">
@@ -69,7 +74,7 @@ if (isset($_POST['btn_ing'])) {
                 <div class="row">
         
             <div class="col-12 col-md-4">
-                        <img class="foto_traslapp rounded-circle" width="115px" height="100px" src="img/traslapp.png" alt="imagen traslapp">
+                        <img class="foto_traslapp rounded-circle" width="120px" height="100px" src="img/traslapp.png" alt="imagen traslapp">
                     </div>
                     <div class="titulo col-12 col-md-4">
                         <h1 style="color: white;">Traslapp</h1>

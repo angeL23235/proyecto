@@ -32,6 +32,11 @@
             font-weight: 700;
             margin-bottom: 20px;
         }
+        .foto_traslapp{
+            background-color:aliceblue;
+            border-color:aliceblue;
+            border-style:inset;
+        }
     </style>
 </head>
 
@@ -40,7 +45,7 @@
         <header>
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <img class="foto_traslapp rounded-circle" width="115px" height="100px" src="img/traslapp.png" alt="imagen traslapp">
+                    <img class="foto_traslapp rounded-circle" width="120px" height="100px" src="img/traslapp.png" alt="imagen traslapp">
                 </div>
                 <div class="titulo col-12 col-md-4">
                     <h1 style="color: white;">Traslapp</h1>
