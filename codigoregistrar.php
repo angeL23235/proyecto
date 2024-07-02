@@ -1,0 +1,46 @@
+<?php
+include "conexion.php";
+
+if (isset($_POST["btn_registrar"])) {
+    $tipodoc = $_POST['cmbident'];
+    $numdoc = $_POST['doc'];
+    $pn = $_POST['pn2'];
+    $ape1 = $_POST['ape1'];
+    $email = $_POST['email2'];
+    $id_rol = $_POST['cmb1'];
+    $pass = $_POST['pass2'];
+    $passc = $_POST['passc'];
+
+    // Procesamiento de la imagen de perfil
+    $foto = $_FILES['foto'];
+    $directorio_destino = "imagen-user/";
+    $nombre_archivo = $foto['name'];
+    $ubicacion_temporal = $foto['tmp_name'];
+    $ruta_destino = $directorio_destino . $nombre_archivo;
+
+    $es_imagen = getimagesize($ubicacion_temporal);
+    if ($es_imagen !== false){
+        if (move_uploaded_file($ubicacion_temporal, $ruta_destino)) {
+            $encrip = md5($pass);
+
+            $registrar = mysqli_query($con, "INSERT INTO `usuario` 
+                (`tipo_documento`, `numero_documento`, `nombres`, `apellidos`, `email`, `id_rol`, `clave`, `foto_perfil`) 
+                VALUES 
+                ('$tipodoc', '$numdoc', '$pn', '$ape1', '$email', '$id_rol', '$encrip', '$ruta_destino')");
+
+            if ($registrar) {
+                echo "<script>alert('Registro Exitoso');</script>";
+                echo "<script>window.location='index.php';</script>";
+            } else {
+                echo "<script>alert('Error en el registro. Por favor, inténtalo de nuevo.');</script>";
+            }
+        } else {
+            echo "<script>alert('Error al cargar la imagen. Por favor, inténtalo de nuevo.');</script>";
+        }
+    } else {
+        echo "<script>alert('Por favor selecciona una imagen válida (JPEG, JPG, PNG).');</script>";
+    }
+} else {
+    echo "<script>alert('No se recibieron datos válidos para el registro.');</script>";
+}
+

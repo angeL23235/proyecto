@@ -1,0 +1,61 @@
+body {
+    max-width: 1200px; /* Ancho máximo en píxeles */
+    margin: 0 auto; /* Centrar el contenido horizontalmente */
+    padding: 20px; /* Espacio interior alrededor del contenido */
+}
+
+/* Estilo para el contenedor principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:20%;
+}
+
+/* Estilo para el segundo contenedor */
+#second {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Ancho completo */
+    max-width: 600px; /* Ancho máximo */
+    margin-top: 20px; /* Espacio superior */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilo para el encabezado */
+.encabezado {
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+
+.titulo {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 2.5rem; 
+    margin-top: 15px; 
+    margin-bottom: 0; 
+}
+
+/* Estilo para el formulario */
+.myform {
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+/* Estilo para los campos del formulario */
+.myform .form-group {
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilo para el botón */
+.btn-registrar {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interior */
+}
+
+
+h1,
+h2,
+h3 {
+    font-family: 'Kaushan Script', cursive;
+}
