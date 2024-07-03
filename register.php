@@ -5,18 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/register.css">
     <title>Registro</title>
-    <style>
-        body {
+    
+</head>
+
+<body>
+<style>
+body {
             font-family: "Bebas Neue", sans-serif;
             font-weight: 400;
             font-size: 16px;
+            background-color:grey;
         }
 
         .titulo h1 {
@@ -38,9 +46,6 @@
             border-style:inset;
         }
     </style>
-</head>
-
-<body>
     <section class="container encabezado text-center">
         <header>
             <div class="row">
@@ -54,7 +59,7 @@
         </header>
     </section>
 
-    <div class="container text-center">
+    <div class="contenedor-register container text-center">
         <div class="row justify-content-center">
             <div class="col-md-6 myform">
                 <div class="logo mb-3">
@@ -62,7 +67,7 @@
                         <h1>Registrarse</h1>
                     </div>
                 </div>
-                <form action="codigoregistrar.php" method="post" enctype="multipart/form-data">
+                <form class="formulario" action="codigoregistrar.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <select name="cmbident" id="" class="form-control">
                             <option value="">Elija documento</option>
