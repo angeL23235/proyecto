@@ -16,11 +16,11 @@ if (isset($_POST['btn_ing'])) {
             $_SESSION['ape'] = $fila['apellidos'];
             $_SESSION['ft'] = $fila['foto_perfil'];
             $_SESSION['rl'] = $fila['id_rol'];
-
             echo "<script>window.location=('dashboard.php');</script>";
         }
     } else {
-        echo "<center><font color='red'>Los datos de usuario no coinciden</font></center>";
+        echo "<center><font color='red'>Los datos de usuario se encuentran</font></center>";
+        echo "<script>alert('revisa los datos ingresados')</script>";
     }
 }
 ?> 

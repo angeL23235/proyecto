@@ -104,7 +104,7 @@ body {
                     </div>
                     <div class="form-group">
                         <label for="foto">Foto de perfil</label>
-                        <input type="file" name="foto" class="form-control-file" id="foto">
+                        <input type="file" name="foto" class="form-control-file">
                     </div>
                     <div class="form-group">
                         <label for="pass">Contraseña</label>

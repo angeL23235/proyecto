@@ -12,36 +12,48 @@ if (isset($_POST["btn_registrar"])) {
     $pass = $_POST['pass2'];
     $passc = $_POST['passc'];
 
-    // Procesamiento de la imagen de perfil
-    $foto = $_FILES['foto'];
-    $directorio_destino = "imagen-user/";
-    $extension = pathinfo($foto['name'], PATHINFO_EXTENSION);
-    $nombre_archivo = $numdoc . "." . $extension;
-    $ubicacion_temporal = $foto['tmp_name'];
-    $ruta_destino = $directorio_destino . $nombre_archivo;
+    // Verificar si el correo electrónico ya existe
+    $query = "SELECT COUNT(*) AS revision FROM `usuario` WHERE `email` = '$email'";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($result);
+    $email_count = $row['revision'];
+    if ($email_count > 0) {
+        echo "<script>alert('El correo electrónico ya está registrado. Por favor, utiliza otro correo.');</script>";
+        echo "<script>window.location='register.php';</script>";
 
-    $es_imagen = getimagesize($ubicacion_temporal);
-    if ($es_imagen !== false){
-        if (move_uploaded_file($ubicacion_temporal, $ruta_destino)) {
-            $encrip = md5($pass);
-            $registrar = mysqli_query($con, "INSERT INTO `usuario` 
-                (`tipo_documento`, `numero_documento`, `nombres`, `apellidos`, `email`, `id_rol`, `clave`, `foto_perfil`) 
-                VALUES 
-                ('$tipodoc', '$numdoc', '$pn', '$ape1', '$email', '$id_rol', '$encrip', '$ruta_destino')");
+    } else {
+        // Procesar imagen de perfil
+        $foto = $_FILES['foto'];
+        $directorio_destino = "imagen-user/";
+        $extension = pathinfo($foto['name'], PATHINFO_EXTENSION);
+        $nombre_archivo = $numdoc . "." . $extension;
+        $ubicacion_temporal = $foto['tmp_name'];
+        $ruta_destino = $directorio_destino . $nombre_archivo;
 
-            if ($registrar) {
-                echo "<script>alert('Registro Exitoso');</script>";
-                echo "<script>window.location='index.php';</script>";
+        $es_imagen = getimagesize($ubicacion_temporal);
+        if ($es_imagen !== false){
+            
+            if (move_uploaded_file($ubicacion_temporal, $ruta_destino)) {
+                $encrip = md5($pass);
+                $registrar = mysqli_query($con, "INSERT INTO `usuario` 
+                    (`tipo_documento`, `numero_documento`, `nombres`, `apellidos`, `email`, `id_rol`, `clave`, `foto_perfil`) 
+                    VALUES 
+                    ('$tipodoc', '$numdoc', '$pn', '$ape1', '$email', '$id_rol', '$encrip', '$ruta_destino')");
+
+                if ($registrar) {
+                    echo "<script>alert('Registro Exitoso');</script>";
+                    echo "<script>window.location='index.php';</script>";
+                } else {
+                    echo "<script>alert('Error en el registro. Por favor, inténtalo de nuevo.');</script>";
+                }
             } else {
-                echo "<script>alert('Error en el registro. Por favor, inténtalo de nuevo.');</script>";
+                echo "<script>alert('Error al cargar la imagen. Por favor, inténtalo de nuevo.');</script>";
             }
         } else {
-            echo "<script>alert('Error al cargar la imagen. Por favor, inténtalo de nuevo.');</script>";
+            echo "<script>alert('Por favor selecciona una imagen válida (JPEG, JPG, PNG).');</script>";
         }
-    } else {
-        echo "<script>alert('Por favor selecciona una imagen válida (JPEG, JPG, PNG).');</script>";
     }
 } else {
     echo "<script>alert('No se recibieron datos válidos para el registro.');</script>";
 }
-
+?>
