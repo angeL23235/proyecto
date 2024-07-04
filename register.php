@@ -96,9 +96,8 @@ body {
                     <div class="form-group">
                         <select name="cmb1" id="rol" class="form-control">
                             <option value="" disabled>Rol</option>
-                            <option value="1">Administrador</option>
+                            <option value="1">Cliente</option>
                             <option value="2">Vendedor</option>
-                            <option value="3">Cliente</option>
                         </select>
                     </div>
                     <div class="form-group">

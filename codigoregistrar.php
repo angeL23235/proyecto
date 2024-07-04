@@ -33,7 +33,7 @@ if (isset($_POST["btn_registrar"])) {
         $es_imagen = getimagesize($ubicacion_temporal);
         if ($es_imagen !== false){
             
-            if (move_uploaded_file($bicacion_temporal, $ruta_destino)) {
+            if (move_uploaded_file($ubicacion_temporal, $ruta_destino)) {
                 $encrip = md5($pass);
                 $registrar = mysqli_query($con, "INSERT INTO `usuario` 
                     (`tipo_documento`, `numero_documento`, `nombres`, `apellidos`, `email`, `id_rol`, `clave`, `foto_perfil`) 
