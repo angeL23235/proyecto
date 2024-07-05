@@ -17,19 +17,16 @@
                $_SESSION['ft'] = $fila['foto_perfil'];
                $_SESSION['rl'] = $fila['id_rol'];
                
-               if($_SESSION['rl']==1){
-                header("location:user/cliente.html");
+               if($_SESSION['rl'] == 1){
+                header("location:client/dashboard.php");
                 }
-                elseif($_SESSION['rl']==2){
-                    header("location:vendedor.html");
-                }elseif($_SESSION['rl']==3){
-                    header("location:admin.php");
+                elseif($_SESSION['rl'] == 2){
+                    header("location:seller/vendedor.html");
+                }elseif($_SESSION['rl'] == 3){
+                    header("location:admin/admin.php");
                 }else{
                     "<script>alert('rectifica tus datos')</script>";
                 }
-        
-
-               echo "<script>window.location=('dashboard.php');</script>";
            }
         
        } else {

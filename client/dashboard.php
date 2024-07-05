@@ -1,5 +1,5 @@
 <?php
-include "conexion.php";
+include "../conexion.php";
 session_start();
 
 ?>
@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Dashboard</title>
@@ -45,7 +45,7 @@ session_start();
                         <hr class="dropdown-divider" />
                     </li>
                     <li>
-                        <a class="dropdown-item" href="exit.php">
+                        <a class="dropdown-item" href="../exit.php">
                             Salir
                         </a>
                     </li>
@@ -128,37 +128,37 @@ session_start();
             <!-- Algoritmo de modulacion -->
             <?php
             if (@$_GET['mod'] == "") {
-                require_once("modules/inicio.php");
+                require_once("../modules/inicio.php");
             } else
                     if (@$_GET['mod'] == "inicio") {
-                require_once("modules/inicio.php");
+                require_once("../modules/inicio.php");
             } else
                     if (@$_GET['mod'] == "navegacion") {
-                require_once("modules/navegacion.php");
+                require_once("../modules/navegacion.php");
             } else
                     if (@$_GET['mod'] == "mediotrans") {
-                require_once("modules/mediotrans.php");
+                require_once("../modules/mediotrans.php");
             } else
                     if (@$_GET['mod'] == "restaurantes") {
-                require_once("modules/resta.php");
+                require_once("../modules/resta.php");
             } else
                     if (@$_GET['mod'] == "hoteles") {
-                require_once("modules/hoteles.php");
+                require_once("../modules/hoteles.php");
             } else
                     if (@$_GET['mod'] == "alquiler-autos") {
-                require_once("modules/alquileraut.php");
+                require_once("../modules/alquileraut.php");
             } else
                     if (@$_GET['mod'] == "aseo") {
-                require_once("modules/servsv.php");
+                require_once("../modules/servsv.php");
             } else
                     if (@$_GET['mod'] == "cocina") {
-                require_once("modules/servscos.php");
+                require_once("../modules/servscos.php");
             } else
                     if (@$_GET['mod'] == "crear_usuario") {
-                require_once("modules/crear.php");
+                require_once("../modules/crear.php");
             } else
                     if (@$_GET['mod'] == "gestion") {
-                require_once("modules/gestion.php");
+                require_once("../modules/gestion.php");
             }
 
             ?>
