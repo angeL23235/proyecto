@@ -90,10 +90,10 @@ body {
             <div class="col-md-6 myform">
                 <div class="logo mb-3">
                     <div class="text-center">
-                        <h1>Registrarse</h1>
+                        <h1>inciar sesion</h1>
                     </div>
                 </div>
-                <form action="index.php" method="post">
+                <form action="codigoadmin.php" method="post">
                     <div class="form-group">
                         <label for="num">Numero de documento</label>
                         <input type="text" name="doc" class="form-control" id="num" aria-describedby="emailHelp" placeholder="Numero de Documento">
