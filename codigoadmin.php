@@ -15,7 +15,7 @@
                $_SESSION['pn'] = $fila['nombres'];
                $_SESSION['ape'] = $fila['apellidos'];
                $_SESSION['ft'] = $fila['foto_perfil'];
-               $_SESSION['rl'] = $fila['id_rol'];
+               $_SESSION['rl'] = $fila['id_rol']; 
                
                if($_SESSION['rl'] == 1){
                 header("location:client/dashboard.php");
