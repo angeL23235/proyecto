@@ -122,15 +122,6 @@ session_start();
                                 </div>
                             </nav>
                         </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="dashboard.php?mod=crear_usuario">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Crear usuario
-                        </a>
-                        <a class="nav-link" href="dashboard.php?mod=gestion">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Gestion
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
