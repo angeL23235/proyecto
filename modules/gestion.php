@@ -103,6 +103,9 @@ body {
                         <label for="pass11">Confirmar contraseña</label>
                         <input type="password" name="passc" id="pass11" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
                     </div>
+                    <div class="form-group"></div>
+                    <input type="button" value="Crear" name="create">
+                    </div>
                 </form>
             </div>
         </div>
