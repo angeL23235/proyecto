@@ -4,7 +4,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,14 +66,8 @@ session_start();
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Interfas</div>
-
-                        <a class="nav-link" href="admin.php?modu=gestion.php" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="bi bi-card-list"></i></div>
-                            CRUD
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-
+                        <a href="#CRUD">
+                            <h1>hola</h1>
                         </a>
                         <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordionPages">
@@ -86,8 +79,8 @@ session_start();
                         </div>
             </nav>
             <div class="container-fluid row">
-                <div class="CRUD">
-                    
+                <div id="CRUD">
+
                 </div>
                 
             </div>
