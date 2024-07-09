@@ -56,14 +56,6 @@ session_start();
             </ul>
         </div>
     </nav>
-      <!-- Modulacion -->
-      <?php
-            if (@$_GET['modu'] == "") {
-                require_once("../modules/gestion.php");
-            }if (@$_GET['mod'] == "gestion") {
-                require_once("../modules/gestion.php");
-            }
-        ?>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -76,7 +68,7 @@ session_start();
                         </a>
                         <div class="sb-sidenav-menu-heading">Interfas</div>
 
-                        <a class="nav-link collapsed" href="admin.php?modu=gestion.php" data-bs-toggle="collapse"
+                        <a class="nav-link" href="admin.php?modu=gestion.php" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="bi bi-card-list"></i></div>
                             CRUD
@@ -93,6 +85,12 @@ session_start();
                             </nav>
                         </div>
             </nav>
+            <div class="container-fluid row">
+                <div class="CRUD">
+                    
+                </div>
+                
+            </div>
         </div>
     <!-- Bootstrap JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-..."
