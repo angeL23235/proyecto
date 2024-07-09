@@ -14,13 +14,22 @@ session_start();
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="../js/login.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <style>
 .name {
     margin-left: 82%;
 }
-</style>
 
+body {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+        }
+        
+</style>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -55,6 +64,15 @@ session_start();
             </ul>
         </div>
     </nav>
+    <?php
+     if (@$_GET['mod'] == "") {
+        require_once("admin.php");
+    } else
+            if (@$_GET['mod'] == "gestion") {
+        require_once("../modules/gestion.php");
+    }
+?>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -66,8 +84,9 @@ session_start();
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Interfas</div>
-                        <a href="#CRUD">
-                            <h1>hola</h1>
+                        <a class="nav-link" aria-current="page" href="admin.php?mod=gestion">
+                        <div class="sb-nav-link-icon"><i class="bi bi-building-gear"></i>
+                           CRUD
                         </a>
                         <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordionPages">

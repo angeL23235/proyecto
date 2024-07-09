@@ -23,7 +23,7 @@ body {
             font-family: "Bebas Neue", sans-serif;
             font-weight: 400;
             font-size: 16px;
-            background-color:grey;
+            background-color:#EBEBEB;
         }
 
         .titulo h1 {
