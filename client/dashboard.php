@@ -17,8 +17,18 @@ session_start();
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Dashboard</title>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 </head>
+<style>
+body {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+</style>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -39,10 +49,11 @@ session_start();
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><img class="rounded-circle" src="../<?php echo $_SESSION['ft']; ?>" width="50px" height="50px"></a>
+                    aria-expanded="false"><img class="rounded-circle" src="../<?php echo $_SESSION['ft']; ?>"
+                        width="50px" height="50px"></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Ajustes</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><a class="dropdown-item" href="#!">Estado</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
