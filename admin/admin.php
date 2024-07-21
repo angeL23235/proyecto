@@ -68,6 +68,9 @@ body {
      if (@$_GET['mod'] == "") {
         require_once("admin.php");
     } else
+            if (@$_GET['mod'] == "crear") {
+        require_once("../modules/crear.php");
+    } else
             if (@$_GET['mod'] == "gestion") {
         require_once("../modules/gestion.php");
     }
@@ -84,9 +87,13 @@ body {
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Interfas</div>
+                        <a class="nav-link" aria-current="page" href="admin.php?mod=crear">
+                        <div class="sb-nav-link-icon"><i class="bi bi-building-gear"></i>
+                           Create
+                        </a>
                         <a class="nav-link" aria-current="page" href="admin.php?mod=gestion">
                         <div class="sb-nav-link-icon"><i class="bi bi-building-gear"></i>
-                           CRUD
+                           Gestion
                         </a>
                         <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordionPages">

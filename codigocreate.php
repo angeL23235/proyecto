@@ -2,7 +2,7 @@
 // inclusion base de datos
 include "conexion.php";
 // Verificacion de datos al presionar el boton
-if (isset($_POST["btn_registrar"])) {
+if (isset($_POST["btn_create"])) {
     $tipodoc = $_POST['cmbident'];
     $numdoc = $_POST['doc'];
     $pn = $_POST['pn2'];
@@ -42,7 +42,7 @@ if (isset($_POST["btn_registrar"])) {
                 ('$tipodoc', '$numdoc', '$pn', '$ape1', '$email', '$id_rol', '$encrip', '$ruta_destino')");
                 if ($registrar) {
                 echo "<script>alert('Registro Exitoso');</script>";
-                echo "<script>window.location='index.php';</script>";
+                echo "<script>window.location='/modules/crear.php';</script>";
                 }else{
                     echo "<script>alert('No se pudo cargar el registro')</script>;";
                 }
