@@ -106,12 +106,12 @@ body {
                     </div>
                     <div class="form-group">
                         <label for="pass">Contraseña</label>
-                        <input type="password" name="pass2" id="pass" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
+                        <input type="password" name="pass2" class="form-control" placeholder="Contraseña">
                     </div>
 
                     <div class="form-group">
                         <label for="pass11">Confirmar contraseña</label>
-                        <input type="password" name="passc" id="pass11" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
+                        <input type="password" name="passco" class="form-control"  placeholder="Contraseña">
                     </div>
 
                     <div class="col-md-12 text-center mb-3">

@@ -45,9 +45,10 @@ body {
             </span>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"><img class="rounded-circle" width="50px"
-                            height="50px" src="../<?php echo $_SESSION['ft']; ?>"></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="rounded-circle" width="50px" height="50px" src="<?php echo $_SESSION['ft']; ?>">
+                    </a>
+                    
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                         <li><a class="dropdown-item" href="#!">Estado</a></li>
@@ -62,6 +63,7 @@ body {
                     </ul>
                 </li>
             </ul>
+            
         </div>
     </nav>
     <?php

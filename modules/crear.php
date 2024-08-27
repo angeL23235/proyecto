@@ -93,7 +93,7 @@ body {
                     </div>
                     <div class="form-group">
                         <label for="foto">Foto de perfil</label>
-                        <input type="file" name="foto" class="form-control-file">
+                        <input type="file" name="foto2" class="form-control-file">
                     </div>
                     <div class="form-group">
                         <label for="pass">Contraseña</label>
@@ -105,12 +105,53 @@ body {
                         <input type="password" name="passc" id="pass11" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
                     </div>
                     <div class="form-group"></div>
-                    <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm" name="btn_create">Crear</button>
+                    <a class="nav-link" href="admin.php?mod=crear">
+                    <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm" name="btn_create" >Crear</button>
+                    </a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <?php
+    if (@$_GET['mod'] == "") {
+        require_once("../modules/inicio.php");
+    } else
+            if (@$_GET['mod'] == "inicio") {
+        require_once("../modules/inicio.php");
+    } else
+            if (@$_GET['mod'] == "navegacion") {
+        require_once("../modules/navegacion.php");
+    } else
+            if (@$_GET['mod'] == "mediotrans") {
+        require_once("../modules/mediotrans.php");
+    } else
+            if (@$_GET['mod'] == "restaurantes") {
+        require_once("../modules/resta.php");
+    } else
+            if (@$_GET['mod'] == "hoteles") {
+        require_once("../modules/hoteles.php");
+    } else
+            if (@$_GET['mod'] == "alquiler-autos") {
+        require_once("../modules/alquileraut.php");
+    } else
+            if (@$_GET['mod'] == "aseo") {
+        require_once("../modules/servsv.php");
+    } else
+            if (@$_GET['mod'] == "cocina") {
+        require_once("../modules/servscos.php");
+    } else
+            if (@$_GET['mod'] == "crear") {
+        require_once("../modules/crear.php");
+    } else
+            if (@$_GET['mod'] == "gestion") {
+        require_once("../modules/gestion.php");
+    } else
+            if (@$_GET['mod'] == "admin") {
+        require_once("../admin/admin.php");
+    }
+
+?>
 
 </body>
 
