@@ -8,18 +8,14 @@ session_start();
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Bootstrap demo</title>
+    <title>Cliente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Dashboard</title>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 </head>
 <style>
@@ -33,7 +29,7 @@ body {
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Traslapp</a>
+        <a class="navbar-brand ps-3" href="#">Traslapp</a>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
@@ -49,11 +45,12 @@ body {
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><img class="rounded-circle" src="<?php echo $_SESSION['ft']; ?>"
-                        width="50px" height="50px"></a>
+                    aria-expanded="false"><img class="rounded-circle" src="<?php echo $_SESSION['ft']; ?>" width="50px"
+                        height="50px"></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Ajustes</a></li>
                     <li><a class="dropdown-item" href="#!">Estado</a></li>
+                    <li><a class="dropdown-item" href="dashboard.php?mod=perfil">Perfil</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -77,13 +74,14 @@ body {
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Interfas</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#deslizante"
+                            aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-location-dot"></i></div>
                             Ubicación
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                        <div class="collapse" id="deslizante" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="dashboard.php?mod=navegacion">Navegacion</a>
@@ -103,31 +101,16 @@ body {
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Explorar Servicios
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="dashboard.php?mod=alquiler-autos">Alquiler de
-                                            autos</a>
-                                        <a class="nav-link" href="dashboard.php?mod=aseo">Servicios varios</a>
-                                        <a class="nav-link" href="dashboard.php?mod=cocina">Servicios de cocina </a>
-                                    </nav>
-                                </div>
 
-
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                                    data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" href="404.html">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
-                                    </nav>
-                                </div>
+                                <a class="nav-link" href="dashboard.php?mod=servicios">Explorar servicios</a>
+                                <?php
+                            if ($_SESSION['rl']== 2 ){
+                                "<script>window.location='';</script>";
+                            ?>
+                                <a class="nav-link" href="dashboard.php?mod=subs">Cargar servicios</a>
+                                <?php
+                            }
+                            ?>
                             </nav>
                         </div>
                     </div>
@@ -158,14 +141,8 @@ body {
             if (@$_GET['mod'] == "hoteles") {
         require_once("../modules/hoteles.php");
     } else
-            if (@$_GET['mod'] == "alquiler-autos") {
-        require_once("../modules/alquileraut.php");
-    } else
-            if (@$_GET['mod'] == "aseo") {
-        require_once("../modules/servsv.php");
-    } else
-            if (@$_GET['mod'] == "cocina") {
-        require_once("../modules/servscos.php");
+            if (@$_GET['mod'] == "servicios") {
+        require_once("../modules/servs.php");
     } else
             if (@$_GET['mod'] == "crear_usuario") {
         require_once("../modules/crear.php");
@@ -175,22 +152,28 @@ body {
     } else
             if (@$_GET['mod'] == "admin") {
         require_once("../admin/admin.php");
-    }
+    } else
+            if (@$_GET['mod'] == "perfil") {
+        require_once("../modules/perfiles.php");
+    } else
+            if (@$_GET['mod'] == "subs") {
+        require_once("../modules/subservs.php");
+        }
+
 
 ?>
         <!-- Fin algoritmo de modulacion -->
-    </div>
-    <!-- Contenido dentro de los modulos -->
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous">
+        </script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous">
+        </script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+            crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
 </body>
 
 </html>

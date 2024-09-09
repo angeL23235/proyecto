@@ -119,8 +119,8 @@ if (isset($_POST['btn_delete'])) {
                     <td><?php echo ($fila['nombres']); ?></td>
                     <td><?php echo ($fila['apellidos']); ?></td>
                     <td><?php echo ($fila['email']); ?></td>
-                    <td><img src="<?php echo $fila['foto_perfil']; ?>" alt="imagen_usuario"
-                            width="50px" height="50px" class="rounded-circle"></td>
+                    <td><img src="<?php echo $fila['foto_perfil']; ?>" alt="imagen_usuario" width="50px" height="50px"
+                            class="rounded-circle"></td>
                     <td>
                         <button class="bi bi-trash-fill" type="button" data-bs-toggle="modal"
                             data-bs-target="#deleteModal<?php echo $id; ?>">Eliminar</button>
@@ -172,8 +172,8 @@ if (isset($_POST['btn_delete'])) {
                                         <label for="documentType<?php echo $id; ?>" class="form-label">Tipo de
                                             documento</label>
                                         <input type="text" class="form-control" id="documentType<?php echo $id; ?>"
-                                            name="document_type"
-                                            value="<?php echo ($fila['tipo_documento']); ?>" readonly>
+                                            name="document_type" value="<?php echo ($fila['tipo_documento']); ?>"
+                                            readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="documentNumber<?php echo $id; ?>" class="form-label">Número de
@@ -194,8 +194,8 @@ if (isset($_POST['btn_delete'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="photo<?php echo $id; ?>" class="form-label">Foto</label>
-                                        <img src="../<?php echo($fila['foto_perfil']); ?>"
-                                            alt="modificar imagen" width="50px" height="50px" class="rounded-circle">
+                                        <img src="../<?php echo($fila['foto_perfil']); ?>" alt="modificar imagen"
+                                            width="50px" height="50px" class="rounded-circle">
                                         <input type="file" class="form-control" id="photo<?php echo $id; ?>"
                                             name="photo">
                                     </div>
