@@ -55,27 +55,28 @@ body {
                         </div>
 
                         <div class="form-group">
-                            <label>Nombre del servicio</label>
+                            <label>Nombre de vendedor</label>
                             <input type="text" name="ns" class="form-control" aria-describedby="emailHelp"
                                 placeholder="Nombres">
                         </div>
                         <div class="form-group">
-                            <label>Descripcion</label>
+                            <label>Descripcion de servicio ofrecido </label>
                             <input type="text" name="desc" class="form-control" aria-describedby="emailHelp"
                                 placeholder="Descripcion">
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
+                            <label>Email de vendedor</label>
                             <input type="text" name="mail" class="form-control" aria-describedby="emailHelp"
                                 placeholder="Correo">
                         </div>
                         <div class="form-group">
-                            <label>precio</label>
+                            <label>Precio a pagar por su servicio</label>
                             <input type="number" name="prec" class="form-control" aria-describedby="emailHelp"
                                 placeholder="Precio">
                         </div>
-                </div> <br>
+                </div>
                 <div class="form-group">
+                    <br>
                     <label for="foto">Foto del servicio</label>
                     <br>
                     <input type="file" name="foto2" class="form-control-file">

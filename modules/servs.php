@@ -45,19 +45,68 @@ body {
     font-size: 16px;
     background-color: #EBEBEB;
 }
+
+.autos {
+    margin-left: 42%;
+    margin-top: -55%;
+
+}
+
+.alquilera {
+    margin-top: 8%;
+}
+
+.aseo {
+    margin-left: 88%;
+    margin-top: -55%;
+
+
+}
+
+.text {
+    margin top: -20%;
+}
 </style>
 
 <body>
     <div class="container">
-        <section class="cards">
-            <div class="card" style="width: 18rem;">
+        <section class="cards kitchen">
+            <div class="card cocina" style="width: 18rem; height:525px;">
                 <img src="../img/cocina.png" class="card-img-top" alt="Hotel budge itagui">
                 <div class="card-body">
+                    <h4 class="card-title text-center">
+                       <strong>Cociname</strong> 
+                    </h4>
                     <h5 class="card-title">Encuentra tus servicios de cocina aqui</h5>
                     <p class="card-text"> Informacion de personas confiables</p>
                     <p>a tu mano</p>
-                    <a href="https://acortar.link/nvXxqH" class="btn btn-primary btn_reservar">rentar servicio de
+                    <a href="#" class="btn btn-primary btn_cocina">rentar servicio de
                         cocina</a>
+                </div>
+
+        </section>
+        <section class="cards autos">
+            <div class="card alquiler" style="width: 19rem;">
+                <img src="../img/autos.jpg" class="card-img-top" alt="Hotel budge itagui" height="800px">
+                <div class="card-body"><br><br>
+                    <h5 class="card-title">¿Necesitas un auto? no busques más</h5>
+                    <p class="card-text">Ahora ven y alquila uno</p>
+                    <p>Desde hoy</p>
+                    <a href="#" class="btn btn-primary btn_auto alquilera">alquilar autos </a>
+                </div>
+
+        </section>
+        <section class="cards aseo">
+            <div class="card alquiler" style="width: 19rem;">
+                <img src="../img/aseo.jpg" class="card-img-top" alt="Hotel budge itagui" height="800px">
+                <div class="card-body"><br>
+                    <div class="text">
+                        <h5 class="card-title">¡Te sientes incomodo con la suciedad?</h5>
+                        <p class="card-text">Pero te da pereza "zzzz"</p>
+                        <p>Sientete comodo y contrata alguien limpie por ti </p>
+                        <a href="#" class="btn btn-primary btn_limpieza asea">Busca
+                            limpieza</a>
+                    </div>
                 </div>
 
         </section>

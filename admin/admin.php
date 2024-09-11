@@ -41,7 +41,7 @@ body {
         <div class="container">
             <!-- Navbar-->
             <span class="name" style="color:white; margin-right:20px;">
-              Hola Admin: <?php echo $_SESSION['pn'], " ", $_SESSION['ape']; ?>
+              Admin: <?php echo $_SESSION['pn'], " ", $_SESSION['ape']; ?>
             </span>
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
