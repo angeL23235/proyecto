@@ -40,16 +40,16 @@ body {
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Tipo de servicio</th>
-                    <th scope="col">Descripcion del servicio</th>
-                    <th scope="col">Precio del servicio</th>
-                    <th scope="col">Foto del servicio</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
+                    <th scope="col" class="table-info">Tipo de servicio</th>
+                    <th scope="col" class="table-info">Descripcion del servicio</th>
+                    <th scope="col" class="table-info">Precio del servicio</th>
+                    <th scope="col" class="table-info">Foto del servicio</th>
+                    <th scope="col" class="table-info">Editar</th>
+                    <th scope="col" class="table-info">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
-            <?php
+                <?php
                 $result2 = mysqli_query($con,"SELECT * FROM serviciosc WHERE tipo_servs = 'alquiler_au'") or die("papu ");
                 while($fila = mysqli_fetch_array($result2)){
                     $id = $fila['id_servicio'];
@@ -59,9 +59,10 @@ body {
                     <th scope="row"><?php echo ($fila['tipo_servs']);?> </th>
                     <td><?php echo ($fila['descripcion_servicio']);?></td>
                     <td><?php echo ($fila['precio_servicio']);?></td>
-                    <td><img src="<?php echo ($fila['ft_servs']);?>" alt="foto de servicio"  width="50px" height="50px"
-                    class="rounded-circle"></td>
-                    <td><button class="bi bi-pencil-square btn btn-info">Editar</button></td>
+                    <td><img src="<?php echo ($fila['ft_servs']);?>" alt="foto de servicio" width="50px" height="50px"
+                            class="rounded-circle"></td>
+                    <td><button type="button" class="bi bi-pencil-square btn btn-info" data-toggle="modal" 
+                    data-target="#modaledit">Editar</button></td>
                     <td><button class="bi bi-trash-fill btn btn-info">Eliminar</button></td>
                 </tr>
             </tbody>
@@ -69,6 +70,28 @@ body {
                 }
             ?>
         </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modaledit">Editar servicio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Guardar cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

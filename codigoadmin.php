@@ -29,8 +29,9 @@
            }
         
        } else {
-           echo "<center><font color='red'>Los datos de usuario se encuentran</font></center>";
            echo "<script>alert('revisa los datos ingresados')</script>";
+           echo "<script>(window.location='index.php')</script>";
+
        }
    }
 ?> 
