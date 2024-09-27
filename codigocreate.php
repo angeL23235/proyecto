@@ -3,14 +3,14 @@ include "conexion.php";
 
 if (isset($_POST["btn_create"])) {
     // Obtener datos del formulario
-    $tipodoc = $_POST['cmbident'];
-    $numdoc = $_POST['doc'];
-    $pn = $_POST['pn2'];
-    $ape1 = $_POST['ape1'];
-    $email = $_POST['email2'];
-    $id_rol = $_POST['cmb1'];
+    $tipodoc = $_POST['cmbident2'];
+    $numdoc = $_POST['doc1'];
+    $pn = $_POST['pnn'];
+    $ape1 = $_POST['ape'];
+    $email = $_POST['email'];
+    $id_rol = $_POST['cmb2'];
     $pass = $_POST['pass2']; 
-    $passc = $_POST['passc'];
+    $passc = $_POST['pass3'];
     
     // Manejo de la imagen de perfil
     $foto = $_FILES['foto2'];

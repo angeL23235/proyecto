@@ -80,7 +80,7 @@ body {
                     <h5 class="card-title">Encuentra tus servicios de cocina aqui</h5>
                     <p class="card-text"> Informacion de personas confiables</p>
                     <p>a tu mano</p>
-                    <a href="#" class="btn btn-primary btn_cocina">rentar servicio de
+                    <a href="dashboard.php?mod=cocina" class="btn btn-primary btn_cocina">rentar servicio de
                         cocina</a>
                 </div>
 
@@ -92,7 +92,7 @@ body {
                     <h5 class="card-title">¿Necesitas un auto? no busques más</h5>
                     <p class="card-text">Ahora ven y alquila uno</p>
                     <p>Desde hoy</p>
-                    <a href="#" class="btn btn-primary btn_auto alquilera">alquilar autos </a>
+                    <a href="dashboard.php?mod=autos" class="btn btn-primary btn_auto alquilera">alquilar autos </a>
                 </div>
 
         </section>
@@ -104,7 +104,7 @@ body {
                         <h5 class="card-title">¡Te sientes incomodo con la suciedad?</h5>
                         <p class="card-text">Pero te da pereza "zzzz"</p>
                         <p>Sientete comodo y contrata alguien limpie por ti </p>
-                        <a href="#" class="btn btn-primary btn_limpieza asea">Busca
+                        <a href="dashboard.php?mod=aseo" class="btn btn-primary btn_limpieza asea">Busca
                             limpieza</a>
                     </div>
                 </div>

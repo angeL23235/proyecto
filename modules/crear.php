@@ -59,7 +59,7 @@ body {
                 </div>
                 <form class="formulario" action="../codigocreate.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <select name="cmbident" id="" class="form-control">
+                        <select name="cmbident2" id="" class="form-control">
                             <option value="">Elija documento</option>
                             <option value="RC">Registro civil</option>
                             <option value="TI">Tarjeta de identidad</option>
@@ -69,12 +69,12 @@ body {
 
                     <div class="form-group">
                         <label for="num">Numero de documento</label>
-                        <input type="text" name="doc" class="form-control" id="num" aria-describedby="emailHelp" placeholder="Numero de Documento">
+                        <input type="text" name="doc1" class="form-control" id="num" aria-describedby="emailHelp" placeholder="Numero de Documento">
                     </div>
 
                     <div class="form-group">
                         <label for="primer">Nombres</label>
-                        <input type="text" name="pn2" class="form-control" id="primer" aria-describedby="emailHelp" placeholder="Nombres">
+                        <input type="text" name="pnn" class="form-control" id="primer" aria-describedby="emailHelp" placeholder="Nombres">
                     </div>
                     <div class="form-group">
                         <label for="ape">Apellidos</label>
@@ -82,10 +82,10 @@ body {
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email2" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo">
+                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo">
                     </div>
                     <div class="form-group">
-                        <select name="cmb1" id="rol" class="form-control">
+                        <select name="cmb2" id="rol" class="form-control">
                             <option value="" disabled>Rol</option>
                             <option value="1">Cliente</option>
                             <option value="2">Vendedor</option>
@@ -102,7 +102,7 @@ body {
 
                     <div class="form-group">
                         <label for="pass11">Confirmar contraseña</label>
-                        <input type="password" name="passc" id="pass11" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
+                        <input type="password" name="pass3" id="pass11" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
                     </div>
                     <div class="form-group"></div>
                     <a class="nav-link" href="admin.php?mod=crear">

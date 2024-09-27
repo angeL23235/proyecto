@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8" />
@@ -45,29 +45,18 @@ body {
                     <form class="formulario" action="../codigoservs.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <select name="cmbservs" class="form-control">
-                                <option value="">Servicios</option>
+                                <option value="">Tipo de Servicio Ofrecido</option>
                                 <option value="" disabled>Elija el servicio que desea cargar</option>
                                 <hr>
-                                <option value="Cocina">Cocina</option>
-                                <option value="Alquiler autos">alquiler de autos</option>
+                                <option value="cocina" >Cocina</option>
+                                <option value="alquiler_autos">alquiler de autos</option>
                                 <option value="aseo">aseo</option>
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Nombre de vendedor</label>
-                            <input type="text" name="ns" class="form-control" aria-describedby="emailHelp"
-                                placeholder="Nombres">
                         </div>
                         <div class="form-group">
                             <label>Descripcion de servicio ofrecido </label>
                             <input type="text" name="desc" class="form-control" aria-describedby="emailHelp"
                                 placeholder="Descripcion">
-                        </div>
-                        <div class="form-group">
-                            <label>Email de vendedor</label>
-                            <input type="text" name="mail" class="form-control" aria-describedby="emailHelp"
-                                placeholder="Correo">
                         </div>
                         <div class="form-group">
                             <label>Precio a pagar por su servicio</label>

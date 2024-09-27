@@ -111,7 +111,7 @@ body {
 
                     <div class="form-group">
                         <label for="pass11">Confirmar contraseña</label>
-                        <input type="password" name="passco" class="form-control"  placeholder="Contraseña">
+                        <input type="password" name="cpass" class="form-control" placeholder="Contraseña">
                     </div>
 
                     <div class="col-md-12 text-center mb-3">

@@ -158,7 +158,16 @@ body {
     } else
             if (@$_GET['mod'] == "subs") {
         require_once("../modules/subservs.php");
-        }
+    } else 
+            if (@$_GET['mod']== "autos"){
+        require_once("../modules/autos.php");
+    } else 
+            if (@$_GET['mod']== "aseo"){
+        require_once("../modules/aseo.php");
+    }else 
+            if (@$_GET['mod']== "cocina"){
+        require_once("../modules/cocina.php");
+    }
 
 
 ?>
