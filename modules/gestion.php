@@ -154,7 +154,7 @@ if (isset($_POST['btn_delete'])) {
                         </div>
                     </div>
                 </div>
-
+                    <!-- Modal consulta mysql 1 -->
                 <div class="modal fade" id="editModal<?php echo $id; ?>" tabindex="-1"
                     aria-labelledby="editModalLabel<?php echo $id; ?>" aria-hidden="true">
                     <div class="modal-dialog">

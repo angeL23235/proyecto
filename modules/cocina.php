@@ -40,12 +40,12 @@ body {
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Tipo de servicio</th>
-                    <th scope="col">Descripcion del servicio</th>
-                    <th scope="col">Precio del servicio</th>
-                    <th scope="col">Foto del servicio</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
+                    <th scope="col" class="table-info">Tipo de servicio</th>
+                    <th scope="col" class="table-info">Descripcion del servicio</th>
+                    <th scope="col" class="table-info">Precio del servicio</th>
+                    <th scope="col" class="table-info">Foto del servicio</th>
+                    <th scope="col" class="table-info">Editar</th>
+                    <th scope="col" class="table-info">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
