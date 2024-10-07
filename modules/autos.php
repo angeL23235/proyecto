@@ -68,21 +68,45 @@ body {
                 </tr>
 
                 <!-- Modal para editar -->
-                <div class="modal fade" id="edit-Modal-<?php echo $id_serv; ?>" tabindex="-1"
+                <div class="modal fade text-center" id="edit-Modal-<?php echo $id_serv; ?>" tabindex="-1"
                     aria-labelledby="editModalLabel-<?php echo $id_serv; ?>" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title text-center" id="editModalLabel-<?php echo $id_serv; ?>">Editar Usuario</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h5 class="modal-title text-center" id="editModalLabel-<?php echo $id_serv; ?>">Editar
+                                    servicio de auto</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="admin.php?mod=autos.php" enctype="multipart/form-data">
-                                    <input type="hidden" name="id_serv" value="<?php echo $fila['tipo_servs']; ?>">
-                                    <p>¿Está seguro de que desea eliminar este usuario?</p>
+                                <form method="post" action="admin.php?mod=autos" enctype="multipart/form-data">
+                                    <p>
+                                        <strong>
+                                            ¿Quieres editar este servicio?
+                                        </strong>
+                                    </p>
+                                    <label for="prec<?php echo $id_serv; ?>" class="form-label">
+                                        Tipo de servicio</label>
+                                    <input type="text" class="form-control" id="documentType<?php echo $id_coc; ?>"
+                                        name="prec" value="<?php echo ($fila['tipo_servs']); ?>">
+                                    <label for="prec<?php echo $id_serv; ?>" class="form-label">
+                                        descripcion del servicio</label>
+                                    <input type="text" class="form-control" id="documentType<?php echo $id_coc; ?>"
+                                        name="prec" value="<?php echo ($fila['descripcion_servicio']); ?>">
+                                    <label for="prec<?php echo $id_serv; ?>" class="form-label">
+                                        Precio del servicio</label>
+                                    <input type="number" class="form-control" id="documentType<?php echo $id_coc; ?>"
+                                        name="prec" value="<?php echo ($fila['precio_servicio']); ?>">
+
+                                    <label for="prec<?php echo $id_serv; ?>" class="form-label">
+                                        foto del servicio</label>
+                                    <input type="file" class="form-control" id="documentType<?php echo $id_coc; ?>"
+                                        name="prec" value="<?php echo ($fila['ft_servs']); ?>">
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-danger" name="btn_delete">Eliminar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-success" name="btn_update">Actualizar
+                                            servicios</button>
                                     </div>
                                 </form>
                             </div>
@@ -96,7 +120,7 @@ body {
         </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-7ZWcsy"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

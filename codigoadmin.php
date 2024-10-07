@@ -21,7 +21,7 @@
                if($_SESSION['rl'] == 1 or 2){
                 header("location:client/dashboard.php");
                 }
-                else if ($_SESSION['rl'] == 3){
+                if ($_SESSION['rl'] == 3){
                     header("location:admin/admin.php");
                 }else{
                     "<script>alert('rectifica tus datos')</script>";
@@ -34,4 +34,4 @@
 
        }
    }
-?> 
+?>

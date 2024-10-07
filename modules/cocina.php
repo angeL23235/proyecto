@@ -50,9 +50,9 @@ body {
             </thead>
             <tbody>
             <?php
-                $result2 = mysqli_query($con,"SELECT * FROM serviciosc WHERE tipo_servs = 'cocina'") or die("papu ");
+                $result2 = mysqli_query($con,"SELECT * FROM serviciosc WHERE tipo_servs = 'cocina' and ") or die("papu ");
                 while($fila = mysqli_fetch_array($result2)){
-                    $id = $fila['id_servicio'];
+                    $id_coc = $fila['id_servicio'];
                 
             ?>
                 <tr>
@@ -61,9 +61,55 @@ body {
                     <td><?php echo ($fila['precio_servicio']);?></td>
                     <td><img src="<?php echo ($fila['ft_servs']);?>" alt="foto de servicio"  width="50px" height="50px"
                     class="rounded-circle"></td>
-                    <td><button class="bi bi-pencil-square btn btn-info">Editar</button></td>
-                    <td><button class="bi bi-trash-fill btn btn-info">Eliminar</button></td>
+                    <td><button class="bi bi-pencil-square btn btn-info" data-bs-toggle = "modal"
+                    data-bs-target="#edit-modall-<?php echo $id_coc;?>"> Editar</button></td>
+                      <td><button class="bi bi-trash-fill btn btn-info">Eliminar</button></td>
                 </tr>
+                       <!-- Modal para editar -->
+                       <div class="modal fade text-center" id="edit-modall-<?php echo $id_coc; ?>" tabindex="-1"
+                    aria-labelledby="edit3ModalLabel-<?php echo $id_coc; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="edit3ModalLabel-<?php echo $id_coc; ?>">Editar servicio de cocina</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="admin.php?mod=cocina" enctype="multipart/form-data">
+                                    <p>¿Quieres editar este servicio?</p>
+                                    <div class="mb-3">
+                                        <label for="<?php echo $id_coc; ?>" class="form-label">Tipo de
+                                            servicio</label>
+                                        <input type="text" class="form-control" id="ServiceType<?php echo $id_coc; ?>"
+                                            name="servs" value="<?php echo ($fila['tipo_servs']); ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="documentType<?php echo $id; ?>" class="form-label">
+                                            Descripcion de servicio</label>
+                                        <input type="text" class="form-control" id="documentType<?php echo $id_coc; ?>"
+                                            name="document_type" value="<?php echo ($fila['descripcion_servicio']); ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="documentType<?php echo $id; ?>" class="form-label">
+                                            Precio del servicio</label>
+                                        <input type="number" class="form-control" id="documentType<?php echo $id_coc; ?>"
+                                            name="document_type" value="<?php echo ($fila['precio_servicio']); ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="documentType<?php echo $id; ?>" class="form-label">
+                                            Foto del servicio</label>
+                                        <input type="file" class="form-control" id="documentType<?php echo $id_coc; ?>"
+                                            name="document_type" value="<?php echo ($fila['ft_servs']); ?>">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-success" name="btn_delete">Actuaizar servicio</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </tbody>
             <?php
                 }

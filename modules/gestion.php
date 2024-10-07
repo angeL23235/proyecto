@@ -129,6 +129,8 @@ if (isset($_POST['btn_delete'])) {
                             data-bs-target="#editModal<?php echo $id; ?>">Editar</i></td>
                 </tr>
 
+
+                <!-- Modal para gestion eliminar usuario -->
                 <div class="modal fade" id="deleteModal<?php echo $id; ?>" tabindex="-1"
                     aria-labelledby="deleteModalLabel<?php echo $id; ?>" aria-hidden="true">
                     <div class="modal-dialog">
@@ -154,8 +156,8 @@ if (isset($_POST['btn_delete'])) {
                         </div>
                     </div>
                 </div>
-                    <!-- Modal consulta mysql 1 -->
-                <div class="modal fade" id="editModal<?php echo $id; ?>" tabindex="-1"
+                <!-- Modal para gestion actualizar info user -->
+                <div class="modal fade text-center" id="editModal<?php echo $id; ?>" tabindex="-1"
                     aria-labelledby="editModalLabel<?php echo $id; ?>" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
