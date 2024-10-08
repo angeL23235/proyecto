@@ -34,7 +34,7 @@ if (isset($_POST['btn_edit'])) {
     
 
     if (mysqli_query($con, $update)) {
-        echo "<script>alert('Registro Exitoso');</script>";
+        echo "<script>alert('Actualizacion exitosa');</script>";
         echo "<script>window.location='admin.php?mod=gestion';</script>";
     } else {
         echo "Error en la consulta mysql" ;
