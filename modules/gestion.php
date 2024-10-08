@@ -2,6 +2,7 @@
 include "../conexion.php";
 session_start();
 
+// Manejo de edición de usuarios
 if (isset($_POST['btn_edit'])) {
     $id_user = $_POST['id_user'];
     $numdoc = $_POST['document_number'];
@@ -14,11 +15,12 @@ if (isset($_POST['btn_edit'])) {
     $ubicacion_temporal = $foto['tmp_name'];
     $ruta_destino = $directorio_destino . $nombre_archivo;
 
+    // Validación de imagen
     $es_imagen = getimagesize($ubicacion_temporal);
 
     if ($es_imagen !== false) {
         if (move_uploaded_file($ubicacion_temporal, $ruta_destino)) {
-            
+            // Imagen cargada correctamente
         } else {
             echo "<script>alert('No se pudo cargar la imagen');</script>";
         }
@@ -26,24 +28,29 @@ if (isset($_POST['btn_edit'])) {
         echo "<script>alert('El archivo subido no es una imagen');</script>";
     }
 
+    // Actualización de datos
     $update = "UPDATE usuario SET numero_documento = '$numdoc', nombres = '$names', apellidos = '$apes'";
     if ($ruta_destino) {
         $update .= ", foto_perfil = '$ruta_destino'";
     }
-    $update .= " WHERE id_user = '$id_user'";
-    
+    $update .= " WHERE numero_documento = '$numdoc'";
 
     if (mysqli_query($con, $update)) {
-        echo "<script>alert('Actualizacion exitosa');</script>";
+        echo "<script>alert('Actualización exitosa');</script>";
         echo "<script>window.location='admin.php?mod=gestion';</script>";
     } else {
-        echo "Error en la consulta mysql" ;
+        echo "Error en la consulta: " . mysqli_error($con);
     }
 }
-if (isset($_POST['btn_delete'])) {
-    $dato = $_POST['dato_eliminar'];
-    $delete = "DELETE FROM usuario WHERE numero_documento = '$dato'";
 
+// Manejo de eliminación de usuarios
+if (isset($_POST['btn_delete'])) {
+    $dato_eliminar = $_POST['dato_eliminar'];
+    $delete_servicios = "DELETE FROM serviciosc WHERE fk_user = '$dato_eliminar'";
+    mysqli_query($con, $delete_servicios);
+
+    $delete = "DELETE FROM usuario WHERE numero_documento = '$dato_eliminar'";
+    
     if (mysqli_query($con, $delete)) {
         echo "<script>alert('Eliminación exitosa');</script>";
         echo "<script>window.location='admin.php?mod=gestion';</script>";
@@ -52,8 +59,6 @@ if (isset($_POST['btn_delete'])) {
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +71,7 @@ if (isset($_POST['btn_delete'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <title>Gestion</title>
+    <title>Gestión</title>
     <style>
     body {
         font-family: "Bebas Neue", sans-serif;
@@ -86,12 +91,11 @@ if (isset($_POST['btn_delete'])) {
     <div class="container text-center bigtable">
         <section class="buscar">
             <form method="post">
-                <input type="txt_bucar" placeholder="Busque por documento">
+                <input type="text" name="txt_bucar" placeholder="Busque por documento">
                 <input type="submit" value="Buscar" name="btn_search">
             </form>
         </section>
         <br>
-
         <table class="table table2">
             <thead>
                 <tr>
@@ -107,11 +111,10 @@ if (isset($_POST['btn_delete'])) {
             </thead>
             <tbody>
                 <?php
-                
                 $result = mysqli_query($con, "SELECT * FROM usuario") or die("Error en la consulta");
 
                 while ($fila = mysqli_fetch_array($result)) {
-                    $id = $fila['id_user'];
+                    $id = $fila['numero_documento'];
                 ?>
                 <tr>
                     <td scope="row"><?php echo($fila['tipo_documento']); ?></td>
@@ -119,7 +122,7 @@ if (isset($_POST['btn_delete'])) {
                     <td><?php echo ($fila['nombres']); ?></td>
                     <td><?php echo ($fila['apellidos']); ?></td>
                     <td><?php echo ($fila['email']); ?></td>
-                    <td><img src="<?php echo $fila['foto_perfil']; ?>" alt="imagen_usuario" width="50px" height="50px"
+                    <td><img src="<?php echo $fila['foto_perfil']; ?>" alt="imagen_usuario" width="50" height="50"
                             class="rounded-circle"></td>
                     <td>
                         <button class="bi bi-trash-fill btn btn-danger" type="button" data-bs-toggle="modal"
@@ -129,8 +132,7 @@ if (isset($_POST['btn_delete'])) {
                             data-bs-target="#editModal<?php echo $id; ?>"></i></td>
                 </tr>
 
-
-                <!-- Modal para gestion eliminar usuario -->
+                <!-- Modal para eliminar usuario -->
                 <div class="modal fade" id="deleteModal<?php echo $id; ?>" tabindex="-1"
                     aria-labelledby="deleteModalLabel<?php echo $id; ?>" aria-hidden="true">
                     <div class="modal-dialog">
@@ -156,7 +158,8 @@ if (isset($_POST['btn_delete'])) {
                         </div>
                     </div>
                 </div>
-                <!-- Modal para gestion actualizar info user -->
+
+                <!-- Modal para editar usuario -->
                 <div class="modal fade text-center" id="editModal<?php echo $id; ?>" tabindex="-1"
                     aria-labelledby="editModalLabel<?php echo $id; ?>" aria-hidden="true">
                     <div class="modal-dialog">
@@ -186,8 +189,8 @@ if (isset($_POST['btn_delete'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="names<?php echo $id; ?>" class="form-label">Nombres</label>
-                                        <input type="text" class="form-control" id="names<?php echo $id; ?>"
-                                            name="names" value="<?php echo ($fila['nombres']); ?>">
+                                        <input type="text" class="form-control" id
+                                            value="<?php echo ($fila['nombres']); ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="surnames<?php echo $id; ?>" class="form-label">Apellidos</label>
@@ -197,7 +200,7 @@ if (isset($_POST['btn_delete'])) {
                                     <div class="mb-3">
                                         <label for="photo<?php echo $id; ?>" class="form-label">Foto</label>
                                         <img src="../<?php echo($fila['foto_perfil']); ?>" alt="modificar imagen"
-                                            width="50px" height="50px" class="rounded-circle">
+                                            width="50" height="50" class="rounded-circle">
                                         <input type="file" class="form-control" id="photo<?php echo $id; ?>"
                                             name="photo">
                                     </div>

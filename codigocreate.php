@@ -6,7 +6,7 @@ if (isset($_POST["btn_create"])) {
     $tipodoc = $_POST['cmbident2'];
     $numdoc = $_POST['doc1'];
     $pn = $_POST['pnn'];
-    $ape1 = $_POST['ape'];
+    $ape1 = $_POST['ape1'];
     $email = $_POST['email'];
     $id_rol = $_POST['cmb2'];
     $pass = $_POST['pass2']; 

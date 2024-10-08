@@ -44,8 +44,13 @@ body {
                     </div>
                     <form class="formulario" action="../codigoservs.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
+                        <div class="form-group">
+                            <label>Nombre del vendedor</label>
+                            <input type="text" name="pn" class="form-control" aria-describedby="emailHelp"
+                                placeholder="Nombre">
+                        </div>
+                            <label>Tipo de servicio</label>
                             <select name="cmbservs" class="form-control">
-                                <option value="">Tipo de Servicio Ofrecido</option>
                                 <option value="" disabled>Elija el servicio que desea cargar</option>
                                 <hr>
                                 <option value="cocina" >Cocina</option>

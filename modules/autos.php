@@ -11,11 +11,11 @@ if (isset($_POST['btn_update'])) {
 
     // Proceso de manejo de imagen
     $ft_servicio = $_FILES['foto_servicio'];
-    $direc_des = "../img-servs";
+    $direc_des = "../img-servs/";
     $extension = pathinfo($ft_servicio['name'], PATHINFO_EXTENSION); 
     $nombre_archivo = $_SESSION['doc'] . "." . $extension;
     $ubicacion_temporal = $ft_servicio['tmp_name']; 
-    $ruta_destino = $direc_des . "." . $nombre_archivo;
+    $ruta_destino = $direc_des . "." . $nombre_archivo; 
     $es_imagen = getimagesize($ubicacion_temporal);
 
     if ($es_imagen !== false) {
@@ -33,7 +33,7 @@ if (isset($_POST['btn_update'])) {
     if ($ruta_destino) {
         $update .= ", ft_servs = '$ruta_destino'"; 
     }
-    $update .= " WHERE id_serv = '$idserv'"; 
+    $update .= " WHERE id_servicio = '$idserv'"; 
 
     if (mysqli_query($con, $update)) { 
         echo "<script>alert('Actualización exitosa');</script>";
@@ -45,7 +45,7 @@ if (isset($_POST['btn_update'])) {
 
 if (isset($_POST['btn_delete'])) {
     $delete = $_POST['dato_eliminar'];
-    $borrar = mysqli_query($con, "DELETE FROM serviciosc WHERE tipo_servs = '$delete' AND fk_user = '$numero'");
+    $borrar = mysqli_query($con, "DELETE FROM serviciosc WHERE id_servicio = '$delete' AND fk_user = '$numero'");
 
     if ($borrar) {
         echo "<script>alert('Eliminación exitosa');</script>";
@@ -63,7 +63,7 @@ if (isset($_POST['btn_delete'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios cocina</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,120 +92,141 @@ body {
 
 <body>
 
-<div class="tabla_m">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col" class="table-info">Tipo de servicio</th>
-            <th scope="col" class="table-info">Descripción del servicio</th>
-            <th scope="col" class="table-info">Precio del servicio</th>
-            <th scope="col" class="table-info">Foto del servicio</th>
-            <th scope="col" class="table-info">Editar</th>
-            <th scope="col" class="table-info">Eliminar</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        // si ese rol es vendedor entonces le muestra sus servicios para editar
-        // y si el rol es cliente le muestra todos los servicios en general
+    <div class="tabla_m text-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="table-info">Tipo de servicio</th>
+                    <th scope="col" class="table-info">Nombre del vendedor</th>
+                    <th scope="col" class="table-info">Descripción del servicio</th>
+                    <th scope="col" class="table-info">Precio del servicio</th>
+                    <th scope="col" class="table-info">Foto del servicio</th>
+                    <?php
+            if ($_SESSION['rl'] == 2) {
+            ?>
+                    <th scope="col" class="table-info">Editar</th>
+                    <th scope="col" class="table-info">Eliminar</th>
+                    <?php
+            }
+            ?>
+                    <?php
+            if ($_SESSION['rl'] == 1) {
+            ?>
+                    <th scope="col" class="table-info">Contactar</th>
+                    <?php
+            }
+            ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
         if ($_SESSION['rl'] == 2) {
             $result2 = mysqli_query($con, "SELECT * FROM serviciosc WHERE tipo_servs = 'alquiler_au' and fk_user = '$numero'") or die("Error en la consulta de servicio autos");
         } elseif ($_SESSION['rl'] == 1) {
             $result2 = mysqli_query($con, "SELECT * FROM serviciosc WHERE tipo_servs = 'alquiler_au'");
         }
-        
+
         while ($fila = mysqli_fetch_array($result2)) {
             $id_serv = $fila['id_servicio'];
             ?>
-            <tr>
-                <th scope="row"><?php echo $fila['tipo_servs']; ?></th>
-                <td><?php echo $fila['descripcion_servicio']; ?></td>
-                <td><?php echo $fila['precio_servicio']; ?></td>
-                <td><img src="<?php echo $fila['ft_servs']; ?>" alt="foto de servicio" width="50px" height="50px"
-                         class="rounded-circle"></td>
-                <?php if ($_SESSION['rl'] == 2) { ?>
+                <tr>
+                    <th scope="row"><?php echo $fila['tipo_servs']; ?></th>
+                    <td><?php echo $fila['nombre_vendedor'];?></td>
+                    <td><?php echo $fila['descripcion_servicio']; ?></td>
+                    <td><?php echo $fila['precio_servicio']; ?></td>
+                    <td><img src="<?php echo $fila['ft_servs']; ?>" alt="foto de servicio" width="50px" height="50px"
+                            class="rounded-circle"></td>
+                    <?php if ($_SESSION['rl'] == 2) { ?>
                     <td>
                         <i type="button" class="bi bi-pencil-square btn btn-info" data-bs-toggle="modal"
-                           data-bs-target="#edit-Modal-<?php echo $id_serv; ?>"></i>
+                            data-bs-target="#edit-Modal-<?php echo $id_serv; ?>"></i>
                     </td>
                     <td><button class="bi bi-trash-fill btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#delete-Modal-<?php echo $id_serv; ?>"></button></td>
-            </tr>
+                            data-bs-target="#delete-Modal-<?php echo $id_serv; ?>"></button></td>
+                    <?php } ?>
+                    <?php if ($_SESSION['rl'] == 1) { ?>
+                    <td><button class="bi bi-chat-right-dots-fill btn btn-success"></button></td>
+                    <?php } ?>
+                </tr>
 
-            <!-- Modal para editar -->
-            <div class="modal fade text-center" id="edit-Modal-<?php echo $id_serv; ?>" tabindex="-1"
-                 aria-labelledby="editModalLabel-<?php echo $id_serv; ?>" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center" id="editModalLabel-<?php echo $id_serv; ?>">Editar
-                                servicio de auto</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                <!-- Modal para editar -->
+                <div class="modal fade text-center" id="edit-Modal-<?php echo $id_serv; ?>" tabindex="-1"
+                    aria-labelledby="editModalLabel-<?php echo $id_serv; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="editModalLabel-<?php echo $id_serv; ?>">Editar
+                                    servicio de auto</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" action="dashboard.php?mod=autos" enctype="multipart/form-data">
-                                <input type="hidden" name="id_serv" value="<?php echo ($fila['fk_user'])?>">
-                                <p>
-                                    <strong>
-                                        ¿Quieres editar este servicio?
-                                    </strong>
-                                </p>
-                                <label for="prec<?php echo $id_serv; ?>" class="form-label">Tipo de servicio</label>
-                                <input type="text" name="cmbserv" class="form-control" id="documentType<?php echo $id_serv; ?>"
-                                       name="tipo_servicio" value="<?php echo ($fila['tipo_servs']); ?>">
-                                <label for="descripcion<?php echo $id_serv; ?>" class="form-label">Descripción del servicio</label>
-                                <input type="text" class="form-control" id="descripcion<?php echo $id_serv; ?>"
-                                       name="desc_serv" value="<?php echo ($fila['descripcion_servicio']); ?>">
-                                <label for="precio<?php echo $id_serv; ?>" class="form-label">Precio del servicio</label>
-                                <input type="number" class="form-control" id="precio<?php echo $id_serv; ?>"
-                                       name="precio_servicio" value="<?php echo ($fila['precio_servicio']); ?>">
-                                <label for="foto<?php echo $id_serv; ?>" class="form-label">Foto del servicio</label>
-                                <input type="file" class="form-control" id="foto<?php echo $id_serv; ?>"
-                                       name="foto_servicio">
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="dashboard.php?mod=autos" enctype="multipart/form-data">
+                                <input type="hidden" name="id_serv" value="<?php echo $id_serv; ?>">
+                                    <p>
+                                        <strong>
+                                            ¿Quieres editar este servicio?
+                                        </strong>
+                                    </p>
+                                    <label for="prec<?php echo $id_serv; ?>" class="form-label">Tipo de servicio</label>
+                                    <input type="text" name="cmbserv" class="form-control"
+                                        id="documentType<?php echo $id_serv; ?>"
+                                        value="<?php echo ($fila['tipo_servs']); ?>">
+                                    <label for="descripcion<?php echo $id_serv; ?>" class="form-label">Descripción del
+                                        servicio</label>
+                                    <input type="text" class="form-control" id="descripcion<?php echo $id_serv; ?>"
+                                        name="desc_serv" value="<?php echo ($fila['descripcion_servicio']); ?>">
+                                    <label for="precio<?php echo $id_serv; ?>" class="form-label">Precio del
+                                        servicio</label>
+                                    <input type="number" class="form-control" id="precio<?php echo $id_serv; ?>"
+                                        name="precio_servicio" value="<?php echo ($fila['precio_servicio']); ?>">
+                                    <label for="foto<?php echo $id_serv; ?>" class="form-label">Foto del
+                                        servicio</label>
+                                    <input type="file" class="form-control" id="foto<?php echo $id_serv; ?>"
+                                        name="foto_servicio">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-success" name="btn_update">Actualizar
-                                        servicios</button>
-                                </div>
-                            </form>
+                                        <button type="submit" class="btn btn-success" name="btn_update">Actualizar
+                                            servicios</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Modal eliminar -->
-            <div class="modal fade" id="delete-Modal-<?php echo $id_serv; ?>" tabindex="-1"
-                 aria-labelledby="deleteModalLabel<?php echo $id_serv; ?>" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center" id="deleteModalLabel<?php echo $id_serv; ?>">Eliminar
-                                Servicio</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                <!-- Modal eliminar -->
+                <div class="modal fade" id="delete-Modal-<?php echo $id_serv; ?>" tabindex="-1"
+                    aria-labelledby="deleteModalLabel<?php echo $id_serv; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="deleteModalLabel<?php echo $id_serv; ?>">
+                                    Eliminar Servicio</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" action="dashboard.php?mod=autos">
-                                <input type="hidden" name="dato_eliminar" value="<?php echo($fila['tipo_servs']); ?>">
-                                <p>¿Está seguro de que desea eliminar este servicio?</p>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="dashboard.php?mod=autos">
+                                    <input type="hidden" name="dato_eliminar"
+                                        value="<?php echo($fila['id_servicio']); ?>">
+                                    <p>¿Está seguro de que desea eliminar este servicio?</p>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-danger" name="btn_delete">Eliminar</button>
-                                </div>
-                            </form>
+                                        <button type="submit" class="btn btn-danger" name="btn_delete">Eliminar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <?php } // Fin del if del rol 2  ?>
-        <?php } // Fin del while ?>
-        </tbody>
-    </table>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-7ZWcsy"
+                <?php } // while ?>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-7ZWcsy"
         crossorigin="anonymous"></script>
 </body>
 
