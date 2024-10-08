@@ -17,8 +17,8 @@ if(isset($_POST['btn_srvs'])){
      if(move_uploaded_file($ubicacion_temporal,$ruta_destino)){
         $db = "../". $ruta_destino;
 
-        $subirservs = mysqli_query($con," INSERT INTO `serviciosc`(`tipo_servs`, `descripcion_servicio`, `precio_servicio`, `ft_servs`) 
-        VALUES ('$cmbservs','$desc','$prec','$db')");
+        $subirservs = mysqli_query($con," INSERT INTO `serviciosc`(`tipo_servs`, `descripcion_servicio`, `precio_servicio`,`fk_user`, `ft_servs`) 
+        VALUES ('$cmbservs','$desc','$prec','$num', '$db')");
         echo "<script>alert('a buena hora subiste el servicio')</script>";
         echo "<script>window.location=('client/dashboard.php?mod=subs')</script>";
     }else{

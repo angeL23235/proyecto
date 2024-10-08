@@ -11,11 +11,13 @@
    
        if ($resultado == 1) {
            while ($fila = mysqli_fetch_array($consulta)) {
+               $_SESSION['us'] = $fila['id_user'];
                $_SESSION['doc'] = $fila['numero_documento'];
                $_SESSION['pn'] = $fila['nombres'];
                $_SESSION['ape'] = $fila['apellidos'];
                $_SESSION['ft'] = $fila['foto_perfil'];
                $_SESSION['rl'] = $fila['id_rol'];
+               
                 
                
                if($_SESSION['rl'] == 1 or 2){

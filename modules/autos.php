@@ -1,5 +1,6 @@
 <?php
     include "../conexion.php";
+    $numero = $_SESSION['doc'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +37,10 @@ body {
 </style>
 
 <body>
+    <?php
+    if($_SESSION['rl'] == 1){
+        
+    ?>
     <div class="tabla_m">
         <table class="table">
             <thead>
@@ -50,7 +55,7 @@ body {
             </thead>
             <tbody>
                 <?php
-                $result2 = mysqli_query($con, "SELECT * FROM serviciosc WHERE tipo_servs = 'alquiler_au'") or die("Error en la consulta de servicio autos");
+                $result2 = mysqli_query($con, "SELECT * FROM serviciosc WHERE tipo_servs = 'alquiler_au' and fk_user = '$numero' ") or die("Error en la consulta de servicio autos");
                 while ($fila = mysqli_fetch_array($result2)) {
                     $id_serv = $fila['id_servicio'];
                 ?>
@@ -64,7 +69,8 @@ body {
                         <i type="button" class="bi bi-pencil-square btn btn-info" data-bs-toggle="modal"
                             data-bs-target="#edit-Modal-<?php echo $id_serv; ?>">Editar</i>
                     </td>
-                    <td><button class="bi bi-trash-fill btn btn-info">Eliminar</button></td>
+                    <td><button class="bi bi-trash-fill btn btn-info" data-bs-toggle="modal"
+                            data-bs-target="eliminar-">Eliminar</button></td>
                 </tr>
 
                 <!-- Modal para editar -->
@@ -113,7 +119,31 @@ body {
                         </div>
                     </div>
                 </div>
-                <?php
+                <!-- Modal eliminar -->
+                <div class="modal fade" id="deleteModal<?php echo $id; ?>" tabindex="-1"
+                    aria-labelledby="deleteModalLabel<?php echo $id; ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="deleteModalLabel<?php echo $id; ?>">Eliminar
+                                    Servicio</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="admin.php?mod=autos">
+                                    <input type="hidden" name="dato_eliminar"
+                                        value="<?php echo($fila['tipo_servs']); ?>">
+                                    <p>¿Está seguro de que desea eliminar este usuario?</p>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-danger" name="btn_delete">Eliminar</button>
+                                    </div>
+                                </form>
+
+                                <?php
+                }
                 }
                 ?>
             </tbody>

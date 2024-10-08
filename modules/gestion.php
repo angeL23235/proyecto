@@ -122,11 +122,11 @@ if (isset($_POST['btn_delete'])) {
                     <td><img src="<?php echo $fila['foto_perfil']; ?>" alt="imagen_usuario" width="50px" height="50px"
                             class="rounded-circle"></td>
                     <td>
-                        <button class="bi bi-trash-fill" type="button" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal<?php echo $id; ?>">Eliminar</button>
+                        <button class="bi bi-trash-fill btn btn-danger" type="button" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal<?php echo $id; ?>"></button>
                     </td>
                     <td><i type="button" class="bi bi-pencil-square" data-bs-toggle="modal"
-                            data-bs-target="#editModal<?php echo $id; ?>">Editar</i></td>
+                            data-bs-target="#editModal<?php echo $id; ?>"></i></td>
                 </tr>
 
 

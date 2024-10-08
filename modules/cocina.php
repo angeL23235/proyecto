@@ -50,7 +50,7 @@ body {
             </thead>
             <tbody>
             <?php
-                $result2 = mysqli_query($con,"SELECT * FROM serviciosc WHERE tipo_servs = 'cocina' and ") or die("papu ");
+                $result2 = mysqli_query($con,"SELECT * FROM serviciosc WHERE tipo_servs = 'cocina'") or die("papu ");
                 while($fila = mysqli_fetch_array($result2)){
                     $id_coc = $fila['id_servicio'];
                 
